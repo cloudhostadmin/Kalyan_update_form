@@ -306,15 +306,22 @@
             100% { transform: rotate(360deg); }
         }
         
+        /* Mobile responsiveness */
         @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
             .container {
-                padding: 25px;
+                padding: 20px;
+                border-radius: 10px;
             }
             
             .header-section {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+                gap: 15px;
             }
             
             .header-text {
@@ -322,13 +329,13 @@
             }
             
             .header-image {
-                width: var(--logo-size-mobile, calc(var(--logo-size, 180px) * 0.7));
-                height: var(--logo-size-mobile, calc(var(--logo-size, 180px) * 0.7));
+                width: var(--logo-size-mobile, 126px);
+                height: var(--logo-size-mobile, 126px);
                 align-self: center;
             }
             
             h1 {
-                font-size: 22px;
+                font-size: 20px;
             }
             
             .sub-heading {
@@ -336,7 +343,7 @@
             }
             
             .sub-heading-note {
-                font-size: 12px;
+                font-size: 11px;
             }
             
             .form-row {
@@ -354,6 +361,29 @@
             
             .demo-image-box {
                 margin: 0 auto;
+                width: 100px;
+                height: 100px;
+            }
+            
+            input, textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            .label-with-note {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 400px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 18px;
             }
         }
     </style>
@@ -366,7 +396,7 @@
                 <div class="sub-heading">Kalyan 2026</div>
                 <div class="sub-heading-note">Address Update Form</div>
             </div>
-            <img src="https://raw.githubusercontent.com/cloudhostadmin/KALYAN_CENTURY_2026/main/kal2026.jpeg" alt="Kalyan Logo" class="header-image" id="rightLogo">
+            <img src="https://raw.githubusercontent.com/cloudhostadmin/Kalyan_address_update_form/blob/main/download%20(1).jpeg" alt="Kalyan Logo" class="header-image" id="rightLogo">
         </div>
         
         <div id="loadingOverlay" class="loading-overlay hidden">
@@ -386,7 +416,7 @@
             <!-- Mobile Number (First field) -->
             <div class="form-group">
                 <label for="mobileNumber">Mobile Number <span class="required">*</span></label>
-                <input type="tel" id="mobileNumber" name="mobileNumber" value="" required pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number">
+                <input type="tel" id="mobileNumber" name="mobileNumber" value="" required pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" inputmode="numeric">
             </div>
             
             <!-- Customer ID with Demo Image -->
@@ -398,7 +428,7 @@
                 <div class="customer-id-group">
                     <input type="text" id="customerId" name="customerId" value="" required disabled placeholder="Auto-filled from mobile number">
                     <div class="demo-image-box">
-                        <img src="https://via.placeholder.com/120x120/667eea/ffffff?text=DEMO+ID" alt="Customer ID Demo" id="demoImage">
+                        <img src="https://raw.githubusercontent.com/cloudhostadmin/kalyan_centenary/main/LOGO%20GP.png" alt="Customer ID Demo" id="demoImage">
                         <div class="demo-image-label">DEMO: Customer ID Location</div>
                     </div>
                 </div>
@@ -441,7 +471,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="pincode">Pincode <span class="required">*</span></label>
-                    <input type="text" id="pincode" name="pincode" value="" required pattern="[0-9]{6}" maxlength="6" placeholder="6-digit">
+                    <input type="text" id="pincode" name="pincode" value="" required pattern="[0-9]{6}" maxlength="6" placeholder="6-digit" inputmode="numeric">
                     <div id="pincodeStatus" class="pincode-status" style="display: none;"></div>
                 </div>
                 
@@ -459,7 +489,7 @@
             <!-- Email ID -->
             <div class="form-group">
                 <label for="emailId">Email ID</label>
-                <input type="email" id="emailId" name="emailId" placeholder="Please provide for easier communications">
+                <input type="email" id="emailId" name="emailId" placeholder="Please provide for easier communications" inputmode="email">
             </div>
             
             <button type="submit" id="submitBtn" class="submit-btn">Submit Address Update</button>
@@ -486,7 +516,7 @@
         const address2CountSpan = document.getElementById('address2Count');
         const address3CountSpan = document.getElementById('address3Count');
         
-        // Google Apps Script URLs - REPLACE WITH YOUR ACTUAL URLS
+        // Google Apps Script URLs
         const fetchCustomerURL = 'https://script.google.com/macros/s/AKfycbxayRL-7vk8_KRA2VHbd_JGOL5yFIase5DG20CQGQND6fdn5HchedYuSyHdFm-Ul9lcWw/exec';
         const updateAddressURL = 'https://script.google.com/macros/s/AKfycbxayRL-7vk8_KRA2VHbd_JGOL5yFIase5DG20CQGQND6fdn5HchedYuSyHdFm-Ul9lcWw/exec';
         
@@ -555,6 +585,9 @@
                     if (data.data.pincode && (!data.data.city || !data.data.state)) {
                         fetchLocationFromPincode(data.data.pincode);
                     }
+                    
+                    // Focus on first editable field after data is loaded
+                    address1Input.focus();
                 } else {
                     alert(data.message || 'Customer not found. Please check the mobile number.');
                     // Clear all fields except mobile
@@ -582,6 +615,19 @@
             const mobile = this.value.trim();
             if (mobile.length === 10 && /^\d{10}$/.test(mobile)) {
                 fetchCustomerData(mobile);
+            }
+        });
+        
+        // ✨ NEW: Mobile number Enter key event - fetch customer data
+        mobileInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Prevent form submission
+                const mobile = this.value.trim();
+                if (mobile.length === 10 && /^\d{10}$/.test(mobile)) {
+                    fetchCustomerData(mobile);
+                } else if (mobile.length > 0 && mobile.length < 10) {
+                    alert('Please enter a complete 10-digit mobile number');
+                }
             }
         });
         
@@ -694,6 +740,7 @@
             // Validate that customer was found
             if (!customerIdInput.value || !firstNameInput.value || !lastNameInput.value) {
                 alert('Please enter a valid mobile number to fetch customer details first.');
+                mobileInput.focus();
                 return;
             }
             
