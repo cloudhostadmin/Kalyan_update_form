@@ -98,8 +98,8 @@
         }
         
         .demo-image-box {
-            width: 120px;
-            height: 120px;
+            width: 200px;
+            height: 140px;
             border: 2px solid #667eea;
             border-radius: 8px;
             display: flex;
@@ -126,8 +126,8 @@
             background: rgba(102, 126, 234, 0.9);
             color: white;
             text-align: center;
-            font-size: 10px;
-            padding: 3px;
+            font-size: 11px;
+            padding: 4px;
             font-weight: 600;
         }
         
@@ -361,8 +361,9 @@
             
             .demo-image-box {
                 margin: 0 auto;
-                width: 100px;
-                height: 100px;
+                width: 100%;
+                max-width: 280px;
+                height: 160px;
             }
             
             input, textarea {
@@ -384,6 +385,10 @@
             
             h1 {
                 font-size: 18px;
+            }
+            
+            .demo-image-box {
+                height: 140px;
             }
         }
     </style>
@@ -423,13 +428,13 @@
             <div class="form-group">
                 <div class="label-with-note">
                     <label for="customerId">Customer ID <span class="required">*</span></label>
-                    <span class="label-note">👉 See demo image</span>
+                    <span class="label-note"></span>
                 </div>
                 <div class="customer-id-group">
                     <input type="text" id="customerId" name="customerId" value="" required disabled placeholder="Auto-filled from mobile number">
                     <div class="demo-image-box">
-                        <img src="https://raw.githubusercontent.com/Kalyan_address_update_form/blob/main/download%20(1).jpeg" alt="Customer ID Demo" id="demoImage">
-                        <div class="demo-image-label">DEMO: Customer ID Location</div>
+                        <img src="https://raw.githubusercontent.com/cloudhostadmin/Kalyan_address_update_form/main/download%20(1).jpeg" alt="Customer ID Demo" id="demoImage">
+                        <div class="demo-image-label">Customer ID Location (Cust No.)</div>
                     </div>
                 </div>
             </div>
@@ -618,7 +623,7 @@
             }
         });
         
-        // ✨ NEW: Mobile number Enter key event - fetch customer data
+        // Mobile number Enter key event - fetch customer data
         mobileInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 e.preventDefault(); // Prevent form submission
@@ -802,4 +807,3 @@
     </script>
 </body>
 </html>
-
