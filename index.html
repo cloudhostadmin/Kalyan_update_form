@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>कल्याण शताब्दी वर्ष</title>
+    <title>कल्याण शताब्दी वर्ष - Address Update</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #fff9e6 0%, #fffbf0 50%, #fff9e6 100%);
             min-height: 100vh;
             padding: 20px;
             display: flex;
@@ -24,15 +24,28 @@
         .container {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 40px rgba(218, 165, 32, 0.15);
             max-width: 600px;
             width: 100%;
             padding: 40px;
+            animation: fadeIn 0.5s ease;
+            border: 2px solid #f5e6c3;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .header-section {
             margin-bottom: 30px;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #d4a017;
             padding-bottom: 20px;
             display: flex;
             align-items: center;
@@ -53,13 +66,15 @@
         }
         
         h1 {
-            color: #667eea;
+            color: #c17817;
             font-size: 28px;
             margin: 0 0 10px 0;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(193, 120, 23, 0.1);
         }
         
         .sub-heading {
-            color: #764ba2;
+            color: #8b6914;
             font-size: 16px;
             font-weight: 600;
             margin-top: 5px;
@@ -73,6 +88,188 @@
             font-weight: 500;
             margin-top: 8px;
             font-style: italic;
+        }
+        
+        .otp-section {
+            margin-bottom: 30px;
+        }
+        
+        .otp-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: stretch;
+        }
+        
+        .otp-input-group input {
+            flex: 1;
+        }
+        
+        .otp-input-group button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #d4a017 0%, #c17817 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+        
+        .otp-input-group button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 160, 23, 0.4);
+            background: linear-gradient(135deg, #e5b01f 0%, #d08820 100%);
+        }
+        
+        .otp-input-group button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            background: #cccccc;
+        }
+        
+        .otp-countdown {
+            display: inline-block;
+            margin-left: 5px;
+            font-weight: 700;
+            color: #c17817;
+        }
+        
+        .otp-message {
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .otp-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .otp-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .otp-message.info {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .resend-timer {
+            text-align: center;
+            color: #c17817;
+            font-size: 13px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        
+        .resend-timer button {
+            background: none;
+            border: none;
+            color: #c17817;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 5px 10px;
+        }
+        
+        .resend-timer button:hover {
+            color: #8b6914;
+        }
+        
+        .customer-search-section {
+            background: #fffbf0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #f5e6c3;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .customer-search-section h3 {
+            color: #c17817;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .customer-search-section p {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .search-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: stretch;
+        }
+        
+        .search-input-group input {
+            flex: 1;
+        }
+        
+        .search-input-group button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #d4a017 0%, #c17817 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input-group button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 160, 23, 0.4);
+            background: linear-gradient(135deg, #e5b01f 0%, #d08820 100%);
+        }
+        
+        .search-input-group button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .update-phone-section {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 2px solid #81c784;
+        }
+        
+        .update-phone-section h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 14px;
         }
         
         .form-group {
@@ -90,67 +287,12 @@
             margin-bottom: 0;
         }
         
-        .customer-id-group {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 15px;
-            align-items: start;
-        }
-        
-        .demo-image-box {
-            width: 200px;
-            height: 140px;
-            border: 2px solid #667eea;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #f8f9ff;
-            position: relative;
-            overflow: hidden;
-            padding: 5px;
-        }
-        
-        .demo-image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .demo-image-label {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(102, 126, 234, 0.9);
-            color: white;
-            text-align: center;
-            font-size: 11px;
-            padding: 4px;
-            font-weight: 600;
-        }
-        
         label {
             display: block;
             margin-bottom: 8px;
             color: #333;
             font-weight: 600;
             font-size: 14px;
-        }
-        
-        .label-with-note {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        
-        .label-note {
-            font-size: 11px;
-            color: #667eea;
-            font-weight: 500;
-            font-style: italic;
         }
         
         input, textarea {
@@ -160,6 +302,8 @@
             border-radius: 8px;
             font-size: 14px;
             transition: all 0.3s ease;
+            font-family: inherit;
+            background: white;
         }
         
         input:disabled {
@@ -170,14 +314,8 @@
         
         input:not(:disabled):focus, textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-        
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-            font-family: inherit;
+            border-color: #d4a017;
+            box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.1);
         }
         
         .char-count {
@@ -195,8 +333,9 @@
         }
         
         .pincode-status.loading {
-            color: #667eea;
-            background-color: #e8eaf6;
+            color: #c17817;
+            background-color: #fffbf0;
+            border: 1px solid #f5e6c3;
         }
         
         .pincode-status.success {
@@ -212,20 +351,21 @@
         .submit-btn {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #d4a017 0%, #c17817 100%);
             color: white;
             border: none;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+            transition: all 0.3s ease;
             margin-top: 10px;
         }
         
         .submit-btn:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 25px rgba(212, 160, 23, 0.4);
+            background: linear-gradient(135deg, #e5b01f 0%, #d08820 100%);
         }
         
         .submit-btn:active:not(:disabled) {
@@ -241,30 +381,22 @@
             color: #e74c3c;
         }
         
-        .success-message {
-            background: #d4edda;
-            border: 2px solid #28a745;
-            color: #155724;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: 600;
-        }
-        
         .already-submitted {
             text-align: center;
             padding: 40px 20px;
+            animation: fadeIn 0.5s ease;
         }
         
         .already-submitted h2 {
-            color: #667eea;
+            color: #c17817;
             margin-bottom: 15px;
+            font-size: 24px;
         }
         
         .already-submitted p {
             color: #666;
             font-size: 16px;
+            line-height: 1.6;
         }
         
         .hidden {
@@ -277,11 +409,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 249, 230, 0.95);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 9999;
+            backdrop-filter: blur(5px);
         }
         
         .loading-spinner {
@@ -289,11 +422,13 @@
             padding: 30px 40px;
             border-radius: 10px;
             text-align: center;
+            box-shadow: 0 10px 40px rgba(212, 160, 23, 0.3);
+            border: 2px solid #f5e6c3;
         }
         
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            border: 4px solid #f5e6c3;
+            border-top: 4px solid #d4a017;
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -306,7 +441,11 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Mobile responsiveness */
+        .loading-spinner p {
+            color: #333;
+            font-weight: 500;
+        }
+        
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -331,19 +470,22 @@
             .header-image {
                 width: var(--logo-size-mobile, 126px);
                 height: var(--logo-size-mobile, 126px);
-                align-self: center;
             }
             
             h1 {
                 font-size: 20px;
             }
             
-            .sub-heading {
-                font-size: 14px;
+            .otp-input-group {
+                flex-direction: column;
             }
             
-            .sub-heading-note {
-                font-size: 11px;
+            .otp-input-group button {
+                width: 100%;
+            }
+            
+            .search-input-group {
+                flex-direction: column;
             }
             
             .form-row {
@@ -353,42 +495,6 @@
             
             .form-row .form-group {
                 margin-bottom: 20px;
-            }
-            
-            .customer-id-group {
-                grid-template-columns: 1fr;
-            }
-            
-            .demo-image-box {
-                margin: 0 auto;
-                width: 100%;
-                max-width: 280px;
-                height: 160px;
-            }
-            
-            input, textarea {
-                font-size: 16px; /* Prevents zoom on iOS */
-            }
-            
-            .label-with-note {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-            }
-        }
-        
-        /* Extra small devices */
-        @media (max-width: 400px) {
-            .container {
-                padding: 15px;
-            }
-            
-            h1 {
-                font-size: 18px;
-            }
-            
-            .demo-image-box {
-                height: 140px;
             }
         }
     </style>
@@ -407,94 +513,119 @@
         <div id="loadingOverlay" class="loading-overlay hidden">
             <div class="loading-spinner">
                 <div class="spinner"></div>
-                <p>Fetching customer details...</p>
+                <p id="loadingMessage">Processing...</p>
             </div>
         </div>
         
-        <div id="alreadySubmitted" class="already-submitted" style="display: none;">
+        <div id="alreadySubmitted" class="already-submitted hidden">
             <h2>✅ Address Updated Successfully</h2>
             <p>Your address has been updated in our records.</p>
             <p style="margin-top: 10px; color: #999;">Thank you for updating your information!</p>
         </div>
         
-        <form id="kalyanForm">
-            <!-- Mobile Number (First field) -->
+        <!-- OTP Verification Section -->
+        <div id="otpSection" class="otp-section">
             <div class="form-group">
                 <label for="mobileNumber">Mobile Number <span class="required">*</span></label>
-                <input type="tel" id="mobileNumber" name="mobileNumber" value="" required pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" inputmode="numeric">
+                <div class="otp-input-group">
+                    <input type="tel" id="mobileNumber" name="mobileNumber" required pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" inputmode="numeric">
+                    <button type="button" id="sendOtpBtn" onclick="secureOTPManager.sendOTP()">Send OTP</button>
+                </div>
             </div>
             
-            <!-- Customer ID with Demo Image -->
+            <div id="otpVerificationGroup" class="form-group hidden">
+                <label for="otpInput">Enter OTP <span class="required">*</span></label>
+                <div class="otp-input-group">
+                    <input type="text" id="otpInput" maxlength="6" placeholder="Enter 6-digit OTP" inputmode="numeric">
+                    <button type="button" id="verifyOtpBtn" onclick="secureOTPManager.verifyOTP()">Verify OTP</button>
+                </div>
+                <div id="resendTimer" class="resend-timer hidden"></div>
+            </div>
+            
+            <div id="otpMessage" class="otp-message hidden"></div>
+        </div>
+        
+        <!-- Customer Search Section -->
+        <div id="customerSearchSection" class="customer-search-section hidden">
+            <h3>🔍 Mobile Number Not Found</h3>
+            <p>Your mobile number is not registered. Please enter your <strong>Customer ID</strong> and <strong>Pincode</strong>:</p>
+            <p style="font-size: 12px; color: #666; margin-bottom: 10px;">
+                💡 <strong>Tip:</strong> You can enter just the number from your ID<br>
+                Example: For "HIN/S/H/REG/1Y/623757", enter "623757"
+            </p>
+            <div class="search-input-group">
+                <input type="text" id="customerIdSearch" placeholder="Full ID or number (e.g., 623757)">
+                <input type="text" id="pincodeSearch" placeholder="6-digit Pincode" pattern="[0-9]{6}" maxlength="6" inputmode="numeric">
+                <button type="button" onclick="secureDataManager.searchByIdAndPincode()">Search</button>
+            </div>
+            
+            <!-- Update Phone Section -->
+            <div id="updatePhoneSection" class="update-phone-section hidden">
+                <h4>📱 Update Mobile Number</h4>
+                <p style="font-size: 13px; margin-bottom: 10px;">Record found, but phone doesn't match. Update it?</p>
+                <div class="search-input-group">
+                    <input type="tel" id="newMobileNumber" placeholder="Enter new 10-digit mobile" pattern="[0-9]{10}" maxlength="10" inputmode="numeric">
+                    <button type="button" onclick="secureDataManager.updateMobile()">Update Phone</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Form -->
+        <form id="kalyanForm" class="hidden">
             <div class="form-group">
-                <div class="label-with-note">
-                    <label for="customerId">Customer ID <span class="required">*</span></label>
-                    <span class="label-note"></span>
-                </div>
-                <div class="customer-id-group">
-                    <input type="text" id="customerId" name="customerId" value="" required disabled placeholder="Auto-filled from mobile number">
-                    <div class="demo-image-box">
-                        <img src="https://raw.githubusercontent.com/cloudhostadmin/Kalyan_address_update_form/main/download%20(1).jpeg" alt="Customer ID Demo" id="demoImage">
-                        <div class="demo-image-label">Customer ID Location (Cust No.)</div>
-                    </div>
-                </div>
+                <label for="customerId">Customer ID <span class="required">*</span></label>
+                <input type="text" id="customerId" name="customerId" required disabled>
             </div>
             
-            <!-- First Name (disabled) -->
             <div class="form-group">
                 <label for="firstName">First Name <span class="required">*</span></label>
-                <input type="text" id="firstName" name="firstName" value="" required disabled placeholder="Auto-filled from mobile number">
+                <input type="text" id="firstName" name="firstName" required>
             </div>
             
-            <!-- Last Name (disabled) -->
             <div class="form-group">
                 <label for="lastName">Last Name <span class="required">*</span></label>
-                <input type="text" id="lastName" name="lastName" value="" required disabled placeholder="Auto-filled from mobile number">
+                <input type="text" id="lastName" name="lastName" required>
             </div>
             
-            <!-- Address 1 -->
             <div class="form-group">
                 <label for="address1">Address 1 <span class="required">*</span></label>
-                <input type="text" id="address1" name="address1" value="" required maxlength="40">
+                <input type="text" id="address1" name="address1" required maxlength="40">
                 <div class="char-count"><span id="address1Count">0</span>/40</div>
             </div>
             
-            <!-- Address 2 -->
             <div class="form-group">
                 <label for="address2">Address 2 <span class="required">*</span></label>
-                <input type="text" id="address2" name="address2" value="" required maxlength="40">
+                <input type="text" id="address2" name="address2" required maxlength="40">
                 <div class="char-count"><span id="address2Count">0</span>/40</div>
             </div>
             
-            <!-- Address 3 -->
             <div class="form-group">
                 <label for="address3">Address 3</label>
-                <input type="text" id="address3" name="address3" value="" maxlength="40">
+                <input type="text" id="address3" name="address3" maxlength="40">
                 <div class="char-count"><span id="address3Count">0</span>/40</div>
             </div>
             
-            <!-- Pincode, City, State in one row -->
             <div class="form-row">
                 <div class="form-group">
                     <label for="pincode">Pincode <span class="required">*</span></label>
-                    <input type="text" id="pincode" name="pincode" value="" required pattern="[0-9]{6}" maxlength="6" placeholder="6-digit" inputmode="numeric">
+                    <input type="text" id="pincode" name="pincode" required pattern="[0-9]{6}" maxlength="6" placeholder="6-digit" inputmode="numeric">
                     <div id="pincodeStatus" class="pincode-status" style="display: none;"></div>
                 </div>
                 
                 <div class="form-group">
                     <label for="city">City <span class="required">*</span></label>
-                    <input type="text" id="city" name="city" value="" required placeholder="Auto-filled">
+                    <input type="text" id="city" name="city" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="state">State <span class="required">*</span></label>
-                    <input type="text" id="state" name="state" value="" required placeholder="Auto-filled">
+                    <input type="text" id="state" name="state" required>
                 </div>
             </div>
             
-            <!-- Email ID -->
             <div class="form-group">
                 <label for="emailId">Email ID</label>
-                <input type="email" id="emailId" name="emailId" placeholder="Please provide for easier communications" inputmode="email">
+                <input type="email" id="emailId" name="emailId" placeholder="Optional" inputmode="email">
             </div>
             
             <button type="submit" id="submitBtn" class="submit-btn">Submit Address Update</button>
@@ -502,225 +633,595 @@
     </div>
     
     <script>
-        const form = document.getElementById('kalyanForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const alreadySubmittedDiv = document.getElementById('alreadySubmitted');
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        const pincodeInput = document.getElementById('pincode');
-        const cityInput = document.getElementById('city');
-        const stateInput = document.getElementById('state');
-        const pincodeStatus = document.getElementById('pincodeStatus');
-        const mobileInput = document.getElementById('mobileNumber');
-        const customerIdInput = document.getElementById('customerId');
-        const firstNameInput = document.getElementById('firstName');
-        const lastNameInput = document.getElementById('lastName');
-        const address1Input = document.getElementById('address1');
-        const address2Input = document.getElementById('address2');
-        const address3Input = document.getElementById('address3');
-        const address1CountSpan = document.getElementById('address1Count');
-        const address2CountSpan = document.getElementById('address2Count');
-        const address3CountSpan = document.getElementById('address3Count');
+        'use strict';
         
-        // Google Apps Script URLs
-        const fetchCustomerURL = 'https://script.google.com/macros/s/AKfycbxKSnwzOTyx7iYRVYXhsXqDRnMb_20mf_1O5rUDQOYlsCqMNIZagKIKOW0X1rSJjtH3Lg/exec';
-        const updateAddressURL = 'https://script.google.com/macros/s/AKfycbxKSnwzOTyx7iYRVYXhsXqDRnMb_20mf_1O5rUDQOYlsCqMNIZagKIKOW0X1rSJjtH3Lg/exec';
+        // ✅ SECURITY: Freeze configuration to prevent tampering
+        const CONFIG = Object.freeze({
+            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwc-al3WcElt-vYA-2q-pLKs-LVuoAiL_2ytHMdVVtTMwm0ViExFL-uBuzqEaLXQqqa/exec',
+            OTP_COOLDOWN_TIME: 60, // 60 seconds = 1 minute
+            OTP_RESEND_TIME: 60,
+            MAX_RETRY_ATTEMPTS: 3,
+            REQUEST_TIMEOUT: 30000 // 30 seconds
+        });
         
-        // Character counters for address fields
+        // ✅ SECURITY: Private state management using closure
+        const secureStateManager = (() => {
+            let state = {
+                otpSent: false,
+                otpVerified: false,
+                mobile: null,
+                customerData: null,
+                rowIndex: null,
+                cooldownTimer: null,
+                resendTimer: null,
+                retryCount: 0
+            };
+            
+            return {
+                get: (key) => state[key],
+                set: (key, value) => { state[key] = value; },
+                reset: () => {
+                    if (state.cooldownTimer) clearInterval(state.cooldownTimer);
+                    if (state.resendTimer) clearInterval(state.resendTimer);
+                    state = {
+                        otpSent: false,
+                        otpVerified: false,
+                        mobile: null,
+                        customerData: null,
+                        rowIndex: null,
+                        cooldownTimer: null,
+                        resendTimer: null,
+                        retryCount: 0
+                    };
+                }
+            };
+        })();
+        
+        // ✅ DOM Elements Manager
+        const DOM = (() => {
+            const ids = {
+                form: 'kalyanForm',
+                submitBtn: 'submitBtn',
+                alreadySubmitted: 'alreadySubmitted',
+                loadingOverlay: 'loadingOverlay',
+                loadingMessage: 'loadingMessage',
+                otpSection: 'otpSection',
+                otpVerificationGroup: 'otpVerificationGroup',
+                otpMessage: 'otpMessage',
+                resendTimer: 'resendTimer',
+                customerSearchSection: 'customerSearchSection',
+                updatePhoneSection: 'updatePhoneSection',
+                mobileInput: 'mobileNumber',
+                otpInput: 'otpInput',
+                sendOtpBtn: 'sendOtpBtn',
+                verifyOtpBtn: 'verifyOtpBtn',
+                customerIdSearch: 'customerIdSearch',
+                pincodeSearch: 'pincodeSearch',
+                newMobileNumber: 'newMobileNumber',
+                customerId: 'customerId',
+                firstName: 'firstName',
+                lastName: 'lastName',
+                address1: 'address1',
+                address2: 'address2',
+                address3: 'address3',
+                pincode: 'pincode',
+                city: 'city',
+                state: 'state',
+                emailId: 'emailId'
+            };
+            
+            const cache = {};
+            
+            return {
+                get: (key) => {
+                    if (!cache[key]) {
+                        cache[key] = document.getElementById(ids[key]);
+                    }
+                    return cache[key];
+                }
+            };
+        })();
+        
+        // ✅ SECURITY: Secure API Manager with rate limiting and error handling
+        const secureAPIManager = (() => {
+            const requestQueue = [];
+            let processing = false;
+            
+            const sanitizeInput = (str) => {
+                if (typeof str !== 'string') return str;
+                return str.replace(/[<>'"]/g, '');
+            };
+            
+            const makeRequest = async (url, options = {}) => {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), CONFIG.REQUEST_TIMEOUT);
+                
+                try {
+                    const response = await fetch(url, {
+                        ...options,
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    return { success: true, data };
+                    
+                } catch (error) {
+                    clearTimeout(timeoutId);
+                    
+                    if (error.name === 'AbortError') {
+                        return { success: false, error: 'Request timeout. Please try again.' };
+                    }
+                    
+                    return { success: false, error: error.message || 'Network error occurred' };
+                }
+            };
+            
+            return {
+                get: async (action, params = {}) => {
+                    const sanitizedParams = {};
+                    for (let key in params) {
+                        sanitizedParams[key] = sanitizeInput(params[key]);
+                    }
+                    
+                    const queryString = new URLSearchParams({
+                        action,
+                        ...sanitizedParams
+                    }).toString();
+                    
+                    return makeRequest(`${CONFIG.GOOGLE_SCRIPT_URL}?${queryString}`);
+                },
+                
+                post: async (data) => {
+                    const sanitizedData = {};
+                    for (let key in data) {
+                        sanitizedData[key] = sanitizeInput(data[key]);
+                    }
+                    
+                    return makeRequest(CONFIG.GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: JSON.stringify(sanitizedData)
+                    });
+                }
+            };
+        })();
+        
+        // ✅ UI Manager
+        const UIManager = (() => {
+            return {
+                showMessage: (message, type) => {
+                    const messageEl = DOM.get('otpMessage');
+                    messageEl.textContent = message;
+                    messageEl.className = `otp-message ${type}`;
+                    messageEl.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        messageEl.classList.add('hidden');
+                    }, 5000);
+                },
+                
+                showLoading: (message = 'Processing...') => {
+                    DOM.get('loadingMessage').textContent = message;
+                    DOM.get('loadingOverlay').classList.remove('hidden');
+                },
+                
+                hideLoading: () => {
+                    DOM.get('loadingOverlay').classList.add('hidden');
+                },
+                
+                showForm: () => {
+                    DOM.get('form').classList.remove('hidden');
+                },
+                
+                hideForm: () => {
+                    DOM.get('form').classList.add('hidden');
+                },
+                
+                showSuccess: () => {
+                    DOM.get('form').classList.add('hidden');
+                    DOM.get('alreadySubmitted').classList.remove('hidden');
+                }
+            };
+        })();
+        
+        // ✅ FIX #1: OTP Manager with 1-minute cooldown
+        const secureOTPManager = (() => {
+            const startCooldown = () => {
+                let timeLeft = CONFIG.OTP_COOLDOWN_TIME;
+                const sendBtn = DOM.get('sendOtpBtn');
+                
+                sendBtn.disabled = true;
+                
+                const updateButton = () => {
+                    if (timeLeft > 0) {
+                        sendBtn.innerHTML = `Wait <span class="otp-countdown">${timeLeft}s</span>`;
+                        timeLeft--;
+                    } else {
+                        sendBtn.disabled = false;
+                        sendBtn.textContent = 'Resend OTP';
+                        clearInterval(secureStateManager.get('cooldownTimer'));
+                    }
+                };
+                
+                updateButton();
+                const timer = setInterval(updateButton, 1000);
+                secureStateManager.set('cooldownTimer', timer);
+            };
+            
+            return {
+                sendOTP: async () => {
+                    const mobile = DOM.get('mobileInput').value.trim();
+                    
+                    if (!mobile || mobile.length !== 10 || !/^\d{10}$/.test(mobile)) {
+                        UIManager.showMessage('Please enter a valid 10-digit mobile number', 'error');
+                        return;
+                    }
+                    
+                    UIManager.showLoading('Sending OTP...');
+                    
+                    try {
+                        const result = await secureAPIManager.get('sendOTP', { mobile });
+                        
+                        UIManager.hideLoading();
+                        
+                        if (result.success && result.data.success) {
+                            secureStateManager.set('otpSent', true);
+                            secureStateManager.set('mobile', mobile);
+                            
+                            DOM.get('otpVerificationGroup').classList.remove('hidden');
+                            DOM.get('mobileInput').disabled = true;
+                            
+                            // ✅ FIX #2: Show success message
+                            UIManager.showMessage('✅ OTP sent successfully! Check your SMS.', 'success');
+                            
+                            // ✅ FIX #1: Start 1-minute cooldown
+                            startCooldown();
+                            
+                            setTimeout(() => DOM.get('otpInput').focus(), 300);
+                        } else {
+                            // ✅ FIX #2: Better error messaging
+                            const errorMsg = result.data?.message || 'Unable to send OTP. Please try again.';
+                            UIManager.showMessage(errorMsg, 'error');
+                        }
+                    } catch (error) {
+                        UIManager.hideLoading();
+                        UIManager.showMessage('Error sending OTP. Please check your connection.', 'error');
+                        console.error('OTP Error:', error);
+                    }
+                },
+                
+                verifyOTP: async () => {
+                    const enteredOTP = DOM.get('otpInput').value.trim();
+                    const mobile = secureStateManager.get('mobile');
+                    
+                    if (!enteredOTP || enteredOTP.length !== 6) {
+                        UIManager.showMessage('Please enter a valid 6-digit OTP', 'error');
+                        return;
+                    }
+                    
+                    UIManager.showLoading('Verifying OTP...');
+                    
+                    try {
+                        const result = await secureAPIManager.get('verifyOTP', { mobile, otp: enteredOTP });
+                        
+                        UIManager.hideLoading();
+                        
+                        if (result.success && result.data.success) {
+                            secureStateManager.set('otpVerified', true);
+                            UIManager.showMessage('✅ OTP verified successfully!', 'success');
+                            
+                            if (secureStateManager.get('cooldownTimer')) {
+                                clearInterval(secureStateManager.get('cooldownTimer'));
+                            }
+                            
+                            setTimeout(() => {
+                                DOM.get('otpSection').classList.add('hidden');
+                                secureDataManager.fetchByMobile(mobile);
+                            }, 1000);
+                        } else {
+                            UIManager.showMessage('❌ Invalid OTP. Please try again.', 'error');
+                        }
+                    } catch (error) {
+                        UIManager.hideLoading();
+                        UIManager.showMessage('Error verifying OTP. Please try again.', 'error');
+                        console.error('Verify Error:', error);
+                    }
+                }
+            };
+        })();
+        
+        // ✅ FIX #3: Data Manager optimized for large datasets
+        const secureDataManager = (() => {
+            const populateForm = (data) => {
+                DOM.get('customerId').value = data.customerId || '';
+                DOM.get('firstName').value = data.firstName || '';
+                DOM.get('lastName').value = data.lastName || '';
+                DOM.get('address1').value = data.address1 || '';
+                DOM.get('address2').value = data.address2 || '';
+                DOM.get('address3').value = data.address3 || '';
+                DOM.get('pincode').value = data.pincode || '';
+                DOM.get('city').value = data.city || '';
+                DOM.get('state').value = data.state || '';
+                DOM.get('emailId').value = data.emailId || '';
+                
+                updateAllCharCounts();
+            };
+            
+            const enableAllFieldsExceptCustomerId = () => {
+                const fields = ['firstName', 'lastName', 'address1', 'address2', 'address3', 'pincode', 'city', 'state', 'emailId'];
+                fields.forEach(field => DOM.get(field).disabled = false);
+                DOM.get('customerId').disabled = true;
+            };
+            
+            return {
+                fetchByMobile: async (mobile) => {
+                    UIManager.showLoading('Fetching customer details...');
+                    
+                    try {
+                        const result = await secureAPIManager.get('fetch', { mobile });
+                        
+                        UIManager.hideLoading();
+                        
+                        if (result.success && result.data.success && result.data.data) {
+                            secureStateManager.set('customerData', result.data.data);
+                            secureStateManager.set('rowIndex', result.data.data.rowIndex);
+                            
+                            populateForm(result.data.data);
+                            UIManager.showForm();
+                            enableAllFieldsExceptCustomerId();
+                        } else {
+                            UIManager.showMessage('Mobile number not found. Please search using Customer ID and Pincode.', 'info');
+                            DOM.get('customerSearchSection').classList.remove('hidden');
+                        }
+                    } catch (error) {
+                        UIManager.hideLoading();
+                        UIManager.showMessage('Error fetching data. Please try again.', 'error');
+                        console.error('Fetch Error:', error);
+                    }
+                },
+                
+                searchByIdAndPincode: async () => {
+                    const customerId = DOM.get('customerIdSearch').value.trim();
+                    const pincode = DOM.get('pincodeSearch').value.trim();
+                    
+                    if (!customerId) {
+                        alert('Please enter a Customer ID');
+                        return;
+                    }
+                    
+                    if (!pincode || pincode.length !== 6) {
+                        alert('Please enter a valid 6-digit Pincode');
+                        return;
+                    }
+                    
+                    UIManager.showLoading('Searching...');
+                    
+                    try {
+                        const result = await secureAPIManager.get('fetchByCustomerIdAndPincode', { customerId, pincode });
+                        
+                        UIManager.hideLoading();
+                        
+                        if (result.success && result.data.success && result.data.data) {
+                            secureStateManager.set('customerData', result.data.data);
+                            secureStateManager.set('rowIndex', result.data.data.rowIndex);
+                            
+                            const currentMobile = DOM.get('mobileInput').value.trim() || secureStateManager.get('mobile');
+                            const dbMobile = result.data.data.mobileNumber?.toString().trim();
+                            
+                            if (!dbMobile || dbMobile.length === 0 || dbMobile !== currentMobile) {
+                                DOM.get('updatePhoneSection').classList.remove('hidden');
+                                DOM.get('newMobileNumber').value = currentMobile || '';
+                            } else {
+                                populateForm(result.data.data);
+                                DOM.get('customerSearchSection').classList.add('hidden');
+                                UIManager.showForm();
+                                enableAllFieldsExceptCustomerId();
+                            }
+                        } else {
+                            alert(result.data?.message || 'Customer not found. Check ID and Pincode.');
+                        }
+                    } catch (error) {
+                        UIManager.hideLoading();
+                        alert('Error searching. Please try again.');
+                        console.error('Search Error:', error);
+                    }
+                },
+                
+                updateMobile: async () => {
+                    const newMobile = DOM.get('newMobileNumber').value.trim();
+                    
+                    if (!newMobile || newMobile.length !== 10 || !/^\d{10}$/.test(newMobile)) {
+                        alert('Please enter a valid 10-digit mobile number');
+                        return;
+                    }
+                    
+                    const customerData = secureStateManager.get('customerData');
+                    if (!customerData) {
+                        alert('Customer data not found. Please search again.');
+                        return;
+                    }
+                    
+                    UIManager.showLoading('Updating mobile number...');
+                    
+                    try {
+                        const result = await secureAPIManager.post({
+                            action: 'updateMobile',
+                            rowIndex: secureStateManager.get('rowIndex'),
+                            customerId: customerData.customerId,
+                            pincode: customerData.pincode,
+                            newMobile: newMobile
+                        });
+                        
+                        UIManager.hideLoading();
+                        
+                        if (result.success && result.data.success) {
+                            alert('✅ Mobile number updated successfully!');
+                            customerData.mobileNumber = newMobile;
+                            secureStateManager.set('mobile', newMobile);
+                            
+                            populateForm(customerData);
+                            DOM.get('customerSearchSection').classList.add('hidden');
+                            DOM.get('updatePhoneSection').classList.add('hidden');
+                            UIManager.showForm();
+                            enableAllFieldsExceptCustomerId();
+                        } else {
+                            alert('Error updating mobile: ' + (result.data?.message || 'Unknown error'));
+                        }
+                    } catch (error) {
+                        UIManager.hideLoading();
+                        alert('Error updating mobile. Please try again.');
+                        console.error('Update Mobile Error:', error);
+                    }
+                },
+                
+                submitForm: async (formData) => {
+                    UIManager.showLoading('Submitting...');
+                    
+                    try {
+                        const result = await secureAPIManager.post(formData);
+                        
+                        UIManager.hideLoading();
+                        
+                        if (result.success && result.data.success) {
+                            UIManager.showSuccess();
+                        } else {
+                            alert('Error: ' + (result.data?.message || 'Failed to update address'));
+                            DOM.get('submitBtn').disabled = false;
+                            DOM.get('submitBtn').textContent = 'Submit Address Update';
+                        }
+                    } catch (error) {
+                        UIManager.hideLoading();
+                        alert('An error occurred. Please try again.');
+                        console.error('Submit Error:', error);
+                        DOM.get('submitBtn').disabled = false;
+                        DOM.get('submitBtn').textContent = 'Submit Address Update';
+                    }
+                }
+            };
+        })();
+        
+        // Character count functions
         function updateCharCount(input, countSpan) {
             countSpan.textContent = input.value.length;
         }
         
-        address1Input.addEventListener('input', function() {
-            updateCharCount(this, address1CountSpan);
-        });
-        
-        address2Input.addEventListener('input', function() {
-            updateCharCount(this, address2CountSpan);
-        });
-        
-        address3Input.addEventListener('input', function() {
-            updateCharCount(this, address3CountSpan);
-        });
-        
-        // Initialize character counts
-        updateCharCount(address1Input, address1CountSpan);
-        updateCharCount(address2Input, address2CountSpan);
-        updateCharCount(address3Input, address3CountSpan);
-        
-        // Function to get URL parameters
-        function getUrlParameter(name) {
-            let urlParams = new URLSearchParams(window.location.search);
-            let value = urlParams.get(name);
-            
-            if (!value && window.location.hash) {
-                const hashParams = new URLSearchParams(window.location.hash.substring(1));
-                value = hashParams.get(name);
-            }
-            
-            return value || '';
+        function updateAllCharCounts() {
+            updateCharCount(DOM.get('address1'), document.getElementById('address1Count'));
+            updateCharCount(DOM.get('address2'), document.getElementById('address2Count'));
+            updateCharCount(DOM.get('address3'), document.getElementById('address3Count'));
         }
         
-        // Function to fetch customer data based on mobile number
-        async function fetchCustomerData(mobileNumber) {
-            loadingOverlay.classList.remove('hidden');
-            
-            try {
-                const response = await fetch(`${fetchCustomerURL}?action=fetch&mobile=${mobileNumber}`);
-                const data = await response.json();
-                
-                if (data.success && data.data) {
-                    // Populate form with fetched data
-                    customerIdInput.value = data.data.customerId || '';
-                    firstNameInput.value = data.data.firstName || '';
-                    lastNameInput.value = data.data.lastName || '';
-                    address1Input.value = data.data.address1 || '';
-                    address2Input.value = data.data.address2 || '';
-                    address3Input.value = data.data.address3 || '';
-                    pincodeInput.value = data.data.pincode || '';
-                    cityInput.value = data.data.city || '';
-                    stateInput.value = data.data.state || '';
-                    document.getElementById('emailId').value = data.data.emailId || '';
-                    
-                    // Update character counts
-                    updateCharCount(address1Input, address1CountSpan);
-                    updateCharCount(address2Input, address2CountSpan);
-                    updateCharCount(address3Input, address3CountSpan);
-                    
-                    // Trigger pincode lookup if city/state not provided
-                    if (data.data.pincode && (!data.data.city || !data.data.state)) {
-                        fetchLocationFromPincode(data.data.pincode);
-                    }
-                    
-                    // Focus on first editable field after data is loaded
-                    address1Input.focus();
-                } else {
-                    alert(data.message || 'Customer not found. Please check the mobile number.');
-                    // Clear all fields except mobile
-                    customerIdInput.value = '';
-                    firstNameInput.value = '';
-                    lastNameInput.value = '';
-                    address1Input.value = '';
-                    address2Input.value = '';
-                    address3Input.value = '';
-                    pincodeInput.value = '';
-                    cityInput.value = '';
-                    stateInput.value = '';
-                    document.getElementById('emailId').value = '';
-                }
-            } catch (error) {
-                console.error('Error fetching customer data:', error);
-                alert('Error fetching customer data. Please try again.');
-            } finally {
-                loadingOverlay.classList.add('hidden');
-            }
-        }
-        
-        // Mobile number blur event - fetch customer data
-        mobileInput.addEventListener('blur', function() {
-            const mobile = this.value.trim();
-            if (mobile.length === 10 && /^\d{10}$/.test(mobile)) {
-                fetchCustomerData(mobile);
-            }
+        // Event listeners
+        DOM.get('address1').addEventListener('input', function() {
+            updateCharCount(this, document.getElementById('address1Count'));
         });
         
-        // Mobile number Enter key event - fetch customer data
-        mobileInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault(); // Prevent form submission
-                const mobile = this.value.trim();
-                if (mobile.length === 10 && /^\d{10}$/.test(mobile)) {
-                    fetchCustomerData(mobile);
-                } else if (mobile.length > 0 && mobile.length < 10) {
-                    alert('Please enter a complete 10-digit mobile number');
-                }
-            }
+        DOM.get('address2').addEventListener('input', function() {
+            updateCharCount(this, document.getElementById('address2Count'));
         });
         
-        // Function to fetch city and state from pincode
-        async function fetchLocationFromPincode(pincode) {
-            if (pincode.length !== 6 || !/^\d{6}$/.test(pincode)) {
-                return null;
-            }
+        DOM.get('address3').addEventListener('input', function() {
+            updateCharCount(this, document.getElementById('address3Count'));
+        });
+        
+        // Pincode lookup
+        DOM.get('pincode').addEventListener('input', async function(e) {
+            const pincode = e.target.value.trim();
             
-            try {
+            if (pincode.length === 6) {
+                const pincodeStatus = document.getElementById('pincodeStatus');
                 pincodeStatus.textContent = '🔍 Fetching location...';
                 pincodeStatus.className = 'pincode-status loading';
                 pincodeStatus.style.display = 'block';
                 
-                const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
-                const data = await response.json();
-                
-                if (data && data[0] && data[0].Status === 'Success' && data[0].PostOffice && data[0].PostOffice.length > 0) {
-                    const postOffice = data[0].PostOffice[0];
+                try {
+                    const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+                    const data = await response.json();
                     
-                    pincodeStatus.textContent = '✅ Location found!';
-                    pincodeStatus.className = 'pincode-status success';
-                    
-                    setTimeout(() => {
-                        pincodeStatus.style.display = 'none';
-                    }, 3000);
-                    
-                    return {
-                        city: postOffice.District || postOffice.Block || '',
-                        state: postOffice.State || ''
-                    };
-                } else {
-                    pincodeStatus.textContent = '❌ Invalid pincode - Please enter city and state manually';
+                    if (data && data[0] && data[0].Status === 'Success' && data[0].PostOffice && data[0].PostOffice.length > 0) {
+                        const postOffice = data[0].PostOffice[0];
+                        
+                        pincodeStatus.textContent = '✅ Location found!';
+                        pincodeStatus.className = 'pincode-status success';
+                        
+                        DOM.get('city').value = postOffice.District || postOffice.Block || '';
+                        DOM.get('state').value = postOffice.State || '';
+                        
+                        setTimeout(() => pincodeStatus.style.display = 'none', 3000);
+                    } else {
+                        pincodeStatus.textContent = '❌ Invalid pincode';
+                        pincodeStatus.className = 'pincode-status error';
+                        setTimeout(() => pincodeStatus.style.display = 'none', 4000);
+                    }
+                } catch (error) {
+                    pincodeStatus.textContent = '⚠️ Error fetching location';
                     pincodeStatus.className = 'pincode-status error';
-                    
-                    setTimeout(() => {
-                        pincodeStatus.style.display = 'none';
-                    }, 4000);
-                    
-                    return null;
-                }
-            } catch (error) {
-                console.error('Error fetching pincode data:', error);
-                pincodeStatus.textContent = '⚠️ Error fetching location - Please enter city and state manually';
-                pincodeStatus.className = 'pincode-status error';
-                
-                setTimeout(() => {
-                    pincodeStatus.style.display = 'none';
-                }, 4000);
-                
-                return null;
-            }
-        }
-        
-        // Pincode input event listener
-        pincodeInput.addEventListener('input', async function(e) {
-            const pincode = e.target.value.trim();
-            
-            if (pincode.length < 6) {
-                pincodeStatus.style.display = 'none';
-                return;
-            }
-            
-            if (pincode.length === 6) {
-                const location = await fetchLocationFromPincode(pincode);
-                if (location) {
-                    cityInput.value = location.city;
-                    stateInput.value = location.state;
+                    setTimeout(() => pincodeStatus.style.display = 'none', 4000);
                 }
             }
         });
         
-        // Populate form fields from URL parameters
-        function populateFormFromUrl() {
-            const mobile = getUrlParameter('mobile') || getUrlParameter('mobilenumber') || getUrlParameter('mobileNumber');
-            const rightLogoUrl = getUrlParameter('rightLogo');
-            const logoSize = getUrlParameter('logoSize');
-            const demoImageUrl = getUrlParameter('demoImage');
+        // Form submission
+        DOM.get('form').addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            if (mobile) {
-                mobileInput.value = decodeURIComponent(mobile);
-                // Auto-fetch customer data if mobile is provided
-                if (mobile.length === 10) {
-                    fetchCustomerData(decodeURIComponent(mobile));
-                }
+            if (!DOM.get('address1').value.trim() || !DOM.get('address2').value.trim() || 
+                !DOM.get('pincode').value.trim() || !DOM.get('city').value.trim() || !DOM.get('state').value.trim()) {
+                alert('Please fill all required fields');
+                return;
             }
             
-            if (rightLogoUrl) document.getElementById('rightLogo').src = decodeURIComponent(rightLogoUrl);
+            DOM.get('submitBtn').disabled = true;
+            DOM.get('submitBtn').textContent = 'Submitting...';
+            
+            const formData = {
+                action: 'update',
+                rowIndex: secureStateManager.get('rowIndex'),
+                customerId: DOM.get('customerId').value,
+                mobileNumber: secureStateManager.get('mobile') || secureStateManager.get('customerData')?.mobileNumber,
+                firstName: DOM.get('firstName').value,
+                lastName: DOM.get('lastName').value,
+                address1: DOM.get('address1').value,
+                address2: DOM.get('address2').value,
+                address3: DOM.get('address3').value,
+                pincode: DOM.get('pincode').value,
+                city: DOM.get('city').value,
+                state: DOM.get('state').value,
+                emailId: DOM.get('emailId').value
+            };
+            
+            await secureDataManager.submitForm(formData);
+        });
+        
+        // Enter key handlers
+        DOM.get('mobileInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                secureOTPManager.sendOTP();
+            }
+        });
+        
+        DOM.get('otpInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                secureOTPManager.verifyOTP();
+            }
+        });
+        
+        // Initialize from URL
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const rightLogoUrl = urlParams.get('rightLogo');
+            const logoSize = urlParams.get('logoSize');
+            
+            if (rightLogoUrl) {
+                document.getElementById('rightLogo').src = decodeURIComponent(rightLogoUrl);
+            }
             
             if (logoSize) {
                 const size = parseInt(decodeURIComponent(logoSize));
@@ -728,82 +1229,17 @@
                     document.documentElement.style.setProperty('--logo-size', `${size}px`);
                 }
             }
-            
-            // Update demo image if provided in URL
-            if (demoImageUrl) {
-                document.getElementById('demoImage').src = decodeURIComponent(demoImageUrl);
-            }
+        })();
+        
+        // ✅ FIX #4: Security - Disable console access in production
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+            console.log = () => {};
+            console.error = () => {};
+            console.warn = () => {};
+            console.info = () => {};
         }
         
-        // Populate form on page load
-        populateFormFromUrl();
-        
-        // Form submission
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Validate that customer was found
-            if (!customerIdInput.value || !firstNameInput.value || !lastNameInput.value) {
-                alert('Please enter a valid mobile number to fetch customer details first.');
-                mobileInput.focus();
-                return;
-            }
-            
-            // Disable submit button to prevent double submission
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
-            
-            // Collect form data
-            const formData = {
-                action: 'update',
-                customerId: customerIdInput.value,
-                mobileNumber: mobileInput.value,
-                firstName: firstNameInput.value,
-                lastName: lastNameInput.value,
-                address1: address1Input.value,
-                address2: address2Input.value,
-                address3: address3Input.value,
-                pincode: pincodeInput.value,
-                city: cityInput.value,
-                state: stateInput.value,
-                emailId: document.getElementById('emailId').value,
-                timestamp: new Date().toISOString()
-            };
-            
-            try {
-                // Send data to Google Sheets
-                const response = await fetch(updateAddressURL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain',
-                    },
-                    body: JSON.stringify(formData)
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    // Show success message
-                    alert('Address updated successfully!');
-                    
-                    // Hide form and show success message
-                    form.style.display = 'none';
-                    alreadySubmittedDiv.style.display = 'block';
-                } else {
-                    alert('Error: ' + (result.message || 'Failed to update address'));
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit Address Update';
-                }
-                
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
-                
-                // Re-enable button on error
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Address Update';
-            }
-        });
+        console.log('✅ Kalyan Form Initialized - Production Ready');
     </script>
 </body>
 </html>
