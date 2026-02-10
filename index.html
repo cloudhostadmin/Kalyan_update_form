@@ -548,11 +548,21 @@
         <!-- Customer Search Section -->
         <div id="customerSearchSection" class="customer-search-section hidden">
             <h3>🔍 Mobile Number Not Found</h3>
-            <p>Your mobile number is not registered. Please enter your <strong>Customer ID</strong> and <strong>Pincode</strong>:</p>
-            <!-- Customer Search Section<p style="font-size: 12px; color: #666; margin-bottom: 10px;">
-                💡 <strong>Tip:</strong> You can enter just the number from your ID<br>
-                Example: For "HIN/S/H/REG/1Y/623757", enter "623757"-->
-            </p>
+            <p>Your mobile number is not registered. Please enter your <strong>Customer ID</strong> and <strong>Address Pincode</strong>:</p>
+            
+            <!-- Customer ID Demo Image and Instructions -->
+            <div style="background: #fff; padding: 15px; border-radius: 8px; border: 2px solid #d4a017; margin: 15px 0;">
+                <p style="font-size: 13px; color: #333; margin-bottom: 10px; font-weight: 600; text-align: center;">
+                    📍 Please find your Customer Number on the magazine envelope received from Gita Press<br>
+                    <span style="font-size: 12px; color: #666;">(कृपया गीता प्रेस से प्राप्त पत्रिका के लिफाफे पर अपना ग्राहक नंबर देखें)</span>
+                </p>
+                <img src="https://raw.githubusercontent.com/cloudhostadmin/Kalyan_Address_Number_update_form/main/Screenshot%202026-02-10%20140353.png" 
+                     alt="Customer ID Location Demo" 
+                     style="width: 100%; max-width: 500px; height: auto; display: block; margin: 10px auto; border-radius: 6px; border: 1px solid #e0e0e0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <p style="font-size: 11px; color: #999; text-align: center; margin-top: 8px; font-style: italic;">
+                </p>
+            </div>
+            
             <div class="search-input-group">
                 <input type="text" id="customerIdSearch" placeholder="Full ID or number (e.g., 623757)">
                 <input type="text" id="pincodeSearch" placeholder="6-digit Pincode" pattern="[0-9]{6}" maxlength="6" inputmode="numeric">
@@ -990,23 +1000,33 @@
                     const pincode = DOM.get('pincodeSearch').value.trim();
                     
                     if (!customerId) {
-                        alert('Please enter a Customer ID');
+                        UIManager.showMessage('Please enter a Customer ID', 'error');
                         return;
                     }
                     
                     if (!pincode || pincode.length !== 6) {
-                        alert('Please enter a valid 6-digit Pincode');
+                        UIManager.showMessage('Please enter a valid 6-digit Pincode', 'error');
                         return;
                     }
                     
-                    UIManager.showLoading('Searching...');
+                    UIManager.showLoading('Searching for customer...');
                     
                     try {
-                        const result = await secureAPIManager.get('fetchByCustomerIdAndPincode', { customerId, pincode });
+                        const result = await secureAPIManager.get('fetchByCustomerIdAndPincode', { 
+                            customerId: customerId, 
+                            pincode: pincode 
+                        });
                         
                         UIManager.hideLoading();
                         
-                        if (result.success && result.data.success && result.data.data) {
+                        if (!result.success) {
+                            // Network or connection error
+                            UIManager.showMessage(result.error || 'Connection error. Please try again.', 'error');
+                            return;
+                        }
+                        
+                        if (result.data && result.data.success && result.data.data) {
+                            // Customer found
                             secureStateManager.set('customerData', result.data.data);
                             secureStateManager.set('rowIndex', result.data.data.rowIndex);
                             
@@ -1014,20 +1034,24 @@
                             const dbMobile = result.data.data.mobileNumber?.toString().trim();
                             
                             if (!dbMobile || dbMobile.length === 0 || dbMobile !== currentMobile) {
+                                // Phone number doesn't match or doesn't exist
                                 DOM.get('updatePhoneSection').classList.remove('hidden');
                                 DOM.get('newMobileNumber').value = currentMobile || '';
                             } else {
+                                // Phone matches, show form
                                 populateForm(result.data.data);
                                 DOM.get('customerSearchSection').classList.add('hidden');
                                 UIManager.showForm();
                                 enableAllFieldsExceptCustomerId();
                             }
                         } else {
-                            alert(result.data?.message || 'Customer not found. Check ID and Pincode.');
+                            // Customer not found
+                            const errorMsg = result.data?.message || 'Customer not found. Please check your Customer ID and Pincode.';
+                            UIManager.showMessage(errorMsg, 'error');
                         }
                     } catch (error) {
                         UIManager.hideLoading();
-                        alert('Error searching. Please try again.');
+                        UIManager.showMessage('An error occurred. Please try again.', 'error');
                         console.error('Search Error:', error);
                     }
                 },
@@ -1243,5 +1267,3 @@
     </script>
 </body>
 </html>
-
-
